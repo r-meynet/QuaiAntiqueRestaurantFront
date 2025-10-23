@@ -11995,4 +11995,9 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   margin: 0;
+}
+
+header,
+footer {
+  width: 100%;
 }/*# sourceMappingURL=main.css.map */
