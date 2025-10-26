@@ -13,7 +13,7 @@ function checkCredentials() {
         // Placer ce token en cookie
         setToken(token);
 
-        
+        setCookie(roleCookieName, "admin", 7);
         window.location.replace("/");
     } else {
         mailInput.classList.add("is-invalid");
