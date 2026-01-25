@@ -73,14 +73,14 @@ function validateMail(input) {
 }
 
 function validateRequired(input) {
-    if (input.value != "") {
-        input.classList.add("is-valid");
-        input.classList.remove("is-invalid");
-        return true;
-    } else {
+    if (input.value == "") {
         input.classList.add("is-invalid");
         input.classList.remove("is-valid");
         return false;
+    } else {
+        input.classList.add("is-valid");
+        input.classList.remove("is-invalid");
+        return true;
     }
 }
 
@@ -113,11 +113,8 @@ function inscrireUtilisateur() {
             }
         })
         .then(() => {
-            alert(
-                "Bravo " +
-                    dataForm.get("prenom") +
-                    ", vous êtes maintenant inscrit, vous pouvez vous connecter !",
-            );
+            const prenom = dataForm.get("prenom");
+            alert(`Bravo ${String(prenom)}, vous êtes maintenant inscrit ! Vous pouvez vous connecter !`);
             document.location.href = "/signin";
         })
         .catch((error) => console.error(error));
