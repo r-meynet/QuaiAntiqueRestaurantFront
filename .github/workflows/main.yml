@@ -15,6 +15,6 @@ jobs:
         username: quaiantiquestudi
         password: ${{ secrets.ftp_password }}
         local_path: './*'
-        remote_path: '/www/'
+        remote_path: './www'
         sftp_only: true
         args: '-o ConnectTimeout=5'
