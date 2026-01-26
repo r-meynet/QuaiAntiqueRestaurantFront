@@ -87,7 +87,7 @@ function validateRequired(input) {
 function inscrireUtilisateur() {
     let dataForm = new FormData(formInscription);
 
-    const myHeaders = new Headers();
+    let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({

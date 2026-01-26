@@ -43,6 +43,9 @@ const LoadContentPage = async () => {
         }
     }
 
+    // Afficher et masquer les éléments en fonction du rôle
+    showAndHideElementsForRoles();
+
     // Récupération du contenu HTML de la route
     const html = await fetch(actualRoute.pathHTML).then((data) => data.text());
     // Ajout du contenu HTML à l'élément avec l'ID "main-page"
@@ -55,15 +58,17 @@ const LoadContentPage = async () => {
         scriptTag.setAttribute("type", "text/javascript");
         scriptTag.setAttribute("src", actualRoute.pathJS);
 
+        // Ecouter quand le script est chargé ET exécuté
+        scriptTag.onload = () => {
+            showAndHideElementsForRoles();
+        };
+
         // Ajout de la balise script au corps du document
         document.querySelector("body").appendChild(scriptTag);
     }
 
     // Changement du titre de la page
     document.title = actualRoute.title + " - " + websiteName;
-
-    // Afficher et masquer les éléments en fonction du rôle
-    showAndHideElementsForRoles();
 };
 
 // Fonction pour gérer les événements de routage (clic sur les liens)
