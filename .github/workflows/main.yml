@@ -11,6 +11,14 @@ jobs:
             - name: 🚚 Get latest code
               uses: actions/checkout@v4
 
+            - name: 📂 Install dependencies
+              uses: actions/setup-node@v2
+              with:
+                node-version: '20'
+
+            - name: 📂 Install npm dependencies
+              run: npm install
+
             - name: 📂 Sync files via SFTP
               uses: wlixcc/SFTP-Deploy-Action@v1.2.4
               with:
