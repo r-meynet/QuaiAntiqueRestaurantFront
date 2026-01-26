@@ -8,18 +8,13 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
     
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+    - name: 📂 Sync files via SFTP
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
-        server: ftp-quaiantiquestudi.alwaysdata.net
+        server: ssh-quaiantiquestudi.alwaysdata.net
         username: quaiantiquestudi
         password: ${{ secrets.ftp_password }}
-        protocol: ftps
-        protocol-secure: true
-        server-dir: www/
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/bootstrap/scss/**
-          **/node_modules/bootstrap/js/**
-          **/node_modules/bootstrap-icons/icons/** 
+        local_path: './*'
+        remote_path: '/www/'
+        sftp_only: true
+        args: '-o ConnectTimeout=5'
