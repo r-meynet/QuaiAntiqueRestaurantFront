@@ -10,7 +10,12 @@ jobs:
         steps:
             - name: 🚚 Get latest code
               uses: actions/checkout@v4
-
+            
+            - name: 🗑️ Remove Git files
+              run: |
+                  rm -rf .git
+                  rm -rf .github
+            
             - name: 📂 Sync files via SFTP
               uses: wlixcc/SFTP-Deploy-Action@v1.2.4
               with:
@@ -21,4 +26,3 @@ jobs:
                   remote_path: "./www"
                   sftp_only: true
                   args: "-o ConnectTimeout=5"
-                  exclude: ".git*,.git*/**,node_modules/**"
