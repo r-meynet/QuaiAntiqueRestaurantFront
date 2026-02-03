@@ -1,7 +1,7 @@
 const tokenCookieName = "accesstoken";
 const roleCookieName = "role";
 const signoutBtn = document.getElementById("signout-btn");
-const apiUrl = "http://127.0.0.1:8000/api/";
+const apiUrl = "https://quaiantiquerestaurantapi.onrender.com/api/";
 
 signoutBtn.addEventListener("click", signout);
 
