@@ -37,7 +37,12 @@ function checkCredentials() {
             // Placer ce token en cookie
             setToken(token);
 
-            setCookie(roleCookieName, result.roles[0], 7);
+            // Nettoyer le rôle : enlever le préfixe "ROLE_"
+            const role = result.roles[0].replace("ROLE_", "").toLowerCase();
+            // "ROLE_ADMIN" → "admin"
+            // "ROLE_CLIENT" ou "ROLE_USER" → "client" ou "user"
+
+            setCookie(roleCookieName, role, 7);
             globalThis.location.replace("/");
         })
         .catch((error) => console.error(error));
